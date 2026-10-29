@@ -15,11 +15,13 @@ Audio files for the Adhkar / Hisn al-Muslim section of the **Muflihin Pro** app.
 
 ## Use / الاستعمال
 
-The app fetches files from a pinned tag, so jsDelivr can cache them permanently:
+The app fetches files from a pinned tag:
 
 ```
-https://cdn.jsdelivr.net/gh/Younes12345698/adhkar-audio-data@v1/audio/<file>.mp3
-https://raw.githubusercontent.com/Younes12345698/adhkar-audio-data/v1/audio/<file>.mp3   (fallback)
+https://raw.githubusercontent.com/Younes12345698/adhkar-audio-data/v1/audio/<file>.mp3
+https://cdn.jsdelivr.net/gh/Younes12345698/adhkar-audio-data@v1/audio/<file>.mp3   (fallback)
 ```
+
+raw is first because the repository (about 184 MB) is above jsDelivr's 50 MB package limit, which makes jsDelivr answer 403 for some files. To make jsDelivr the main path, split the files into repositories under 50 MB each.
 
 Changing any file means publishing a new tag (`v2`) and updating `ADHKAR_AUDIO_REF` in the app (`src/lib/adhkar-audio.ts`); never move an existing tag.
